@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
- 
+
 //creamos una instancia de la clase WebApplicationBuilder, que se utiliza para construir una aplicación web.
 // CreateBuilder es un método estático que crea una instancia de WebApplicationBuilder y le pasa los argumentos proporcionados como parámetro.
 // Los argumentos son opcionales y se utilizan para configurar la aplicación. Por ejemplo, se pueden utilizar para establecer la configuración de la aplicación, los servicios, el enrutamiento y otras características.
@@ -16,7 +16,6 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo API", Description = "Keep track of your tasks", Version = "v1" });
 });
-
 
 var app = builder.Build();
 
@@ -67,9 +66,6 @@ app.MapDelete("/todos/{id}", async (TodoDb db, int id) =>
     return Results.Ok(todo);
 });
 
-
-
-
 app.Run();
 
 class TodoItem
@@ -78,9 +74,6 @@ class TodoItem
     public string? Item { get; set; }
     public bool IsComplete { get; set; }
 }
-
-
-
 
 class TodoDb : DbContext
 {
